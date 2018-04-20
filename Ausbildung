@@ -1,0 +1,29 @@
+# Verbinden Edge und Node
+library(igraph)
+# liest die Dateien direkt aus dem github-Verzeichnis ein
+edau <- read.csv("https://raw.githubusercontent.com/im041/Final/master/edge-ausb.csv", header=T, as.is=T, sep = ",")
+noau <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/node-ausb.csv", header=T, as.is=T, sep = ",")
+
+# prüft, ob alle Variablen eingelesen wurden
+head(edau)
+head(noau)
+
+# wandelt die edgelist in eine Matrix um und baut das igraph-Objekt
+ties <-as.matrix(edau)
+ausb <- graph_from_data_frame(d=ties, vertices=noau, directed=TRUE) #Hier ist irgendwo der Fehler
+ausb
+#Basisvisualisierung
+plot(ausb)
+
+#Selektion durch Farbe/Formen von Attributen
+#FARBEN nach Vertex-Attributen definieren
+colrs <- c("lightblue","pink")
+V(ausb)$color <- colrs[V(ausb)$Geschlecht]
+plot(ausb)
+
+V(ausb)$shape = "circle"
+#definiert, dass alle Knoten als Kreis auftreten
+kowi <- V(ausb)[Promotion == "1"]
+# wählt alle Knoten aus, die das Vertex-Attribut "2" bei $smoke gesetzt haben
+V(ausb)[kowi]$shape = "square"
+
