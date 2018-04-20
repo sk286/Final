@@ -1,0 +1,51 @@
+# Paket laden
+library(igraph)
+
+# edgelist einlesen
+pr <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-oj.csv", header=T, as.is=T, sep = ",")
+
+# edgelist prÃ¼fen
+pr
+
+# edgelist umwandeln in igraph-objekt
+pr <- graph_from_data_frame(pr, directed=T)
+
+# igraph-Objekt prÃ¼fen
+pr
+plot(pr)
+
+# Neues Vertex-Attribut "ind" erstellen, basierend auf der Berechnung vom indegree nach degree(pr, mode = "in")
+V(pr)$ind = degree(pr, mode = "in")
+pr
+
+# prÃ¼fen, ob das Vertex-Attribut erstellt wurde
+list.vertex.attributes(pr)
+
+# zeigt uns alle zugewiesenen indegrees in pr an: man sieht, dass es nur wenige Ã¼ber 2 gibt.
+V(pr)$ind
+
+# Teilnetzwerk erstellen, indem alle Knoten gelÃ¶scht werden, die einen Indegree-Wert von kleiner als 2 haben
+
+pr1 <- delete_vertices(pr, V(pr)[ind == "1"])
+pr2 <- delete_vertices(pr1, V(pr1)[ind == "2"])
+pr3 <- delete_vertices(pr2, V(pr2)[ind == "3"])
+plot(pr2)
+pr4 <- delete_vertices(pr3, V(pr3)[ind == "4"])
+pr5 <- delete_vertices(pr4, V(pr4)[ind == "5"])
+plot(pr5)
+pr6 <- delete_vertices(pr5, V(pr5)[ind == "6"])
+pr7 <- delete_vertices(pr6, V(pr6)[ind == "7"])
+pr8 <-delete_vertices(pr7, V(pr7)[ind == "0"])
+plot(pr8)
+
+vertex_attr(pr8)
+pr1
+
+# Zur Kontrolle: zeigt, dass alle indegree-Werte mit 1 gelÃ¶scht wurden, auch die hohen Werte von gestern sind mit dabei.
+V(pr_plus1)$ind
+
+#Eventuell für die Visualisierung von Zwischenstops z.B. pr5 oder vielleicht für Gesamtnetzwerk:
+#mehrfache Edges werden aufadiert/vereinfacht, kann dann noch nach KantenstÃ¤rke verdickt werden
+prf<-simplify(pr8, edge.attr.comb = list(weight="sum"))
+plot(prf, vertex.size=degree(prf)*3)
+prf
