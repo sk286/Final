@@ -1,0 +1,24 @@
+##Egonetzwerke, um Zitationen deutlicher zu machen
+###Egonetzwerk Bentele 
+egobentele <- subgraph <- make_ego_graph(pr, order=1, c("Bentele"))
+plot(egobentele[[1]], edge.arrow.size=.1)
+
+###Egonetzwerk HuckSandhu###
+egohucksandhu <- subgraph <- make_ego_graph(pr, order=1, c("HuckSandhu"))
+plot(egohucksandhu[[1]], edge.arrow.size=.1)
+
+###Egonetzwerk SzyszkaP###
+egoszyszkap <- subgraph <- make_ego_graph(pr, order=1, c("SzyszkaP"))
+plot(egoszyszkap[[1]], edge.arrow.size=.1)
+
+###Egonetzwerk Bruhn###
+egobruhn <- subgraph <- make_ego_graph(pr, order=1, c("Bruhn"))
+plot(egobruhn[[1]], edge.arrow.size=.1)
+
+###Egonetzwerk Luhmann###
+egoluhmann <- subgraph <- make_ego_graph(pr, order=1, c("Luhmann"))
+plot(egoluhmann[[1]], edge.arrow.size=.1)
+
+#Egonetzwerk Bentele
+ego_bentele <- make_ego_graph(pr, order = 1, nodes = V(pr)$name == Hoffjann, mode ="in")
+plot(ego_bentele[[1]], main="Ego-Netzwerk Bentele")
