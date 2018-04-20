@@ -1,0 +1,19 @@
+#Themenübersicht der Meinungsführerwerke
+library(igraph)
+thema <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-thema.csv", header=T, as.is=T, sep = ",")
+
+# edgelist prÃ¼fent
+thema
+
+# edgelist umwandeln in igraph-objekt
+thema <- graph_from_data_frame(thema, directed=T)
+
+#Versuch einzelne Knoten zu färben
+UK<-incident(thema,V(thema)[name=="UK"],mode="all")
+UK
+vcol<-rep("grey40", vcount(thema))
+vcol[V(thema)$name=="UK"]<-"grey"
+
+#Grafik machen
+plot(thema,vertex.color="red")
+plot(thema)
