@@ -17,9 +17,12 @@ V(pr)$shape = "circle"
 #definiert, dass alle Knoten als Kreis auftreten
 
 V(pr)$color = "turquoise"
+#Knotenfarbe
 
+V(pr)$frame.color="white"
+#Rahmenfarbe Knoten 
 
-#Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label WEg und Knoten kleiner
+#Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
 plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Zitationsnetzwerk PR-Einführungsliteratur")
 
 #######Visualisierung bis hier##########
