@@ -1,3 +1,10 @@
+library(igraph)
+el <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-be.csv", header=TRUE)
+is.data.frame(el)
+el
+#Funktion graph.data.frame
+pr <- graph.data.frame(el, directed=TRUE)
+pr
 ##Egonetzwerke, um Zitationen deutlicher zu machen
 ###Egonetzwerk Bentele 
 egobentele <- subgraph <- make_ego_graph(pr, order=1, c("Bentele"))
