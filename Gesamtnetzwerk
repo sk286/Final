@@ -19,7 +19,7 @@ V(pr)$shape = "circle"
 V(pr)$color = "turquoise"
 #Knotenfarbe
 
-V(pr)$frame.color="white"
+V(pr)$frame.color="darkslategray4"
 #Rahmenfarbe Knoten 
 
 #Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
