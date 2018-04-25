@@ -5,14 +5,27 @@ el
 #Funktion graph.data.frame
 pr <- graph.data.frame(el, directed=TRUE)
 pr
-#Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label WEg und Knoten kleiner
-plot(pr, vertex.size=1, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Zitationsnetzwerk PR-Einführungsliteratur")
 
-#Visualisierung mit Labels
-plot(pr,layout =layout_with_fr)
+########Visualisierung ab hier##########
 
-#Noch machen: schön einfärben und eventuell Kanten zusammenfügen, Netzwerkmaße ausrechnen lassen->braucht man für Interpretation
+#Visualisierung mit Befehlen aus Skript Tag3 Blockseminar
 
+E(pr)$color="grey" # definiert die Kantenfarbe auf grey
+
+
+V(pr)$shape = "circle"
+#definiert, dass alle Knoten als Kreis auftreten
+
+V(pr)$color = "turquoise"
+#Knotenfarbe
+
+V(pr)$frame.color="white"
+#Rahmenfarbe Knoten 
+
+#Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
+plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Zitationsnetzwerk PR-Einführungsliteratur")
+
+##Visualisierung Ende##
 
 #Netzwerkma?e
 components(pr)
