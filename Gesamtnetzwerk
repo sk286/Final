@@ -22,6 +22,15 @@ V(pr)$color = "turquoise"
 V(pr)$frame.color="darkslategray4"
 #Rahmenfarbe Knoten 
 
+#Färbt einen einzigen Knoten ein
+V(pr)["Bentele"]$color<-"darkolivegreen1"
+V(pr)["RoettgerU"]$color<-"darkolivegreen1"
+V(pr)["HuckSandhu"]$color<-"darkolivegreen1"
+V(pr)["Luhmann"]$color<-"darkolivegreen1"
+V(pr)["SzyszkaP"]$color<-"darkolivegreen1"
+V(pr)["Merten"]$color<-"darkolivegreen1"
+V(pr)["Bruhn"]$color<-"darkolivegreen1"
+
 #Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
 plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Zitationsnetzwerk PR-Einführungsliteratur")
 
