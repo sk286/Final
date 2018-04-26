@@ -26,7 +26,7 @@ V(thema)$label.color="azure4"
 V(thema)["Grundlagen"]$color<-"darkolivegreen1"
 V(thema)["OeffentlichkeitsarbeitBildung"]$color<-"darkolivegreen1"
 V(thema)["Berufsfeld"]$color<-"darkolivegreen1"
-V(thema)["UK"]$color<-"darkolivegreen1"
+V(thema)["Unternehmenskommunikation"]$color<-"darkolivegreen1"
 V(thema)["IssuesManagement"]$color<-"darkolivegreen1"
 #Färbt einen einzigen Knoten ein
 
