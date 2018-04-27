@@ -12,15 +12,11 @@ head(noau)
 ties <-as.matrix(edau)
 ausb <- graph_from_data_frame(d=ties, vertices=noau, directed=TRUE) #Hier ist irgendwo der Fehler
 ausb
-#Basisvisualisierung
 plot(ausb)
 
-#Selektion durch Farbe/Formen von Attributen
-#FARBEN nach Vertex-Attributen definieren
+###Beginn Visualisierung###
 
 V(ausb)$shape = "circle"
-#definiert, dass alle Knoten als Kreis auftreten
-
 V(ausb)$color = "turquoise"
 #definiert, dass alle Knoten türkis sind 
 V(ausb)$label.family = "Helvetica"
@@ -35,33 +31,26 @@ V(ausb)$label.dist=0
 V(ausb)$label.color="azure4"
 #Labelfarbe
 
-
 ##Edge-Attribute##
 E(ausb)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
 E(ausb)$edge.size=5
 edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+
 ###Visualisierung Ende###
 
-##Gleichzeitig zweites Attribut zeigen
+##Habilitation durch Formen hervorheben
 V(ausb)$shape = "circle"
-#definiert, dass alle Knoten als Kreis auftreten
 habi <- V(ausb)[Habilitation == "1"]
-# wählt alle Knoten aus, die das Vertex-Attribut "1" bei Promotion haben
 V(ausb)[habi]$shape = "square"
 
-##Geschlecht: Überlegen welche passenden Farben
+##Doktortitel in unterschiedlichen Farben
 colrs <- c("lightcyan2","turquoise","darkseagreen3")
 V(ausb)$color <- colrs[V(ausb)$Promotion]
 
-#Reihenfolge Geschlecht und Färbung Grundlagenautoren auf keinen Fall ändern!!
+##Reihenfolge Geschlecht und Färbung Grundlagenautoren auf keinen Fall ändern!!
 V(ausb)["Hoffjann"]$color<-"darkolivegreen1"
 V(ausb)["Mast"]$color<-"darkolivegreen1"
 V(ausb)["Steinke"]$color<-"darkolivegreen1"
 V(ausb)["Franck"]$color<-"darkolivegreen1"
 
 plot(ausb)
-
-#TO Do: überlegen was wir gleichzeitig zeigen wollen --> Geht richtung interpretation
-
-#zeigt Grundlagenautoren und Meinungsführer, also auch Denkbar dass Grundlagenautoren wieder in grün 
-#und dann noch mal durch Formen zeigen was wir hervorheben wollen
