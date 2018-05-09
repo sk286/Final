@@ -9,10 +9,14 @@ head(edau)
 head(noau)
 
 # wandelt die edgelist in eine Matrix um und baut das igraph-Objekt
-ties <-as.matrix(edau)
-ausb <- graph_from_data_frame(d=ties, vertices=noau, directed=TRUE) #Hier ist irgendwo der Fehler
+ausbties <-as.matrix(edau)
+ausb <- graph_from_data_frame(d=ausbties, vertices=noau, directed=T) #Hier ist irgendwo der Fehler
 ausb
 plot(ausb)
+
+#addiert edges auf, wenn sie in der gleichen Beziehung sind (Bezug zu ausbties oben)
+
+ausb <- simplify(edau, edge.attr.comb = list(weight="sum"))
 
 ###Beginn Visualisierung###
 
@@ -32,9 +36,9 @@ V(ausb)$label.color="azure4"
 #Labelfarbe
 
 ##Edge-Attribute##
-E(ausb)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
+E(ausb)$arrow.size <- .2 # definiert die Pfeilspitze auf 2
 E(ausb)$edge.size=5
-edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+edge.width=E(ausb)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
 
 ###Visualisierung Ende###
 
@@ -54,3 +58,6 @@ V(ausb)["Steinke"]$color<-"darkolivegreen1"
 V(ausb)["Franck"]$color<-"darkolivegreen1"
 
 plot(ausb)
+title("Promotionen der Meinungsführer und Grundlagenautoren", font.main= 2.5, col.main= "azure4")
+
+
