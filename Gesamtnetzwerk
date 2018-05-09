@@ -38,20 +38,20 @@ title("Gesamtnetzwerk der PR-Grundlagenliteratur", font.main= 2.5, col.main= "az
 
 ##Visualisierung Ende##
 
+##Cluster##
+cluster_walktrap(pr)
+gc<-cluster_walktrap(pr)          
+modularity(gc)
+membership(gc)
+plot(gc,pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Gesamtnetzwerk PR-Grundlagenliteratur"
+##Cluster Ende
+
 #Netzwerkma?e
 components(pr)
 is_connected(pr)
 diameter(pr)
 edge_density(pr)
 mean_distance(pr)
-
-#Clusteranzahl
-cluster_walktrap(pr)
-#Geaue Clusteranalyse
-gc<-cluster_walktrap(pr)          
-modularity(gc)
-membership(gc)
-plot(gc,pr,edge.arrow.size=.2)
 
 #ZentralitÃ¤t des Netzwerks
 degree(pr,mode="in")
