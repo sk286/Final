@@ -31,11 +31,12 @@ V(thema)["IssuesManagement"]$color<-"darkolivegreen1"
 #Färbt einen einzigen Knoten ein
 
 ##Edge-Attribute##
-E(thema)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
+E(thema)$arrow.size <- .2 # definiert die Pfeilspitze auf 2
 E(thema)$edge.size=5
-edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+edge.width=E(thema)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
 
 ###Visualisierung Ende###
 
 #Grafik machen
 plot(thema)
+title("Themen der Meinungsführerwerke", font.main= 2.5, col.main= "azure4")
