@@ -43,7 +43,7 @@ V(pr)["Steinke"]$color<-"darkolivegreen1"
 
 ##Edge-Attribute##
 
-E(pr)$arrow.size <- 2 # definiert die Pfeilspitze auf 2
+E(pr)$arrow.size <- 0.2 # definiert die Pfeilspitze auf 0.2
 E(pr)$edge.size=5
 edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight"
 
@@ -52,28 +52,35 @@ edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight"
 ##Egonetzwerke, um Zitationen deutlicher zu machen
 ###Egonetzwerk Merten
 egomerten <- subgraph <- make_ego_graph(pr, order=1, c("Merten"))
-plot(egomerten[[1]])
+plot(egomerten[[1]], edge.arrow.size=.2)
+title("Egonetzwerk Merten", font.main= 2.5, col.main= "azure4")
 
 ###Egonetzwerk RoettgerU
 egoroettgerU <- subgraph <- make_ego_graph(pr, order=1, c("RoettgerU"))
-plot(egoroettgerU[[1]])
+plot(egoroettgerU[[1]], , edge.arrow.size=.2)
+title("Egonetzwerk RoettgerU", font.main= 2.5, col.main= "azure4")
 
 ###Egonetzwerk HuckSandhu###
 egohucksandhu <- subgraph <- make_ego_graph(pr, order=1, c("HuckSandhu"))
-plot(egohucksandhu[[1]], edge.arrow.size=.1)
+plot(egohucksandhu[[1]], edge.arrow.size=.2)
+title("Egonetzwerk Huck-Sandhu", font.main= 2.5, col.main= "azure4")
 
 ###Egonetzwerk SzyszkaP###
 egoszyszkap <- subgraph <- make_ego_graph(pr, order=1, c("SzyszkaP"))
-plot(egoszyszkap[[1]], edge.arrow.size=.1)
+plot(egoszyszkap[[1]], edge.arrow.size=.2)
+title("Egonetzwerk SzyszkaP", font.main= 2.5, col.main= "azure4")
 
 ###Egonetzwerk Bruhn###
 egobruhn <- subgraph <- make_ego_graph(pr, order=1, c("Bruhn"))
-plot(egobruhn[[1]], edge.arrow.size=.1)
+plot(egobruhn[[1]], edge.arrow.size=.2)
+title("Egonetzwerk Bruhn", font.main= 2.5, col.main= "azure4")
 
 ###Egonetzwerk Luhmann###
 egoluhmann <- subgraph <- make_ego_graph(pr, order=1, c("Luhmann"))
-plot(egoluhmann[[1]], edge.arrow.size=.1)
+plot(egoluhmann[[1]], edge.arrow.size=.2)
+title("Egonetzwerk Luhmann", font.main= 2.5, col.main= "azure4")
 
 #Egonetzwerk Bentele
 egobentele <- make_ego_graph(pr, order = 1, c("Bentele"))
-plot(egobentele[[1]])
+plot(egobentele[[1]], edge.arrow.size=.2)
+title("Egonetzwerk Bentele", font.main= 2.5, col.main= "azure4")
