@@ -33,7 +33,8 @@ V(pr)["Franck"]$color<-"darkolivegreen1"
 V(pr)["Hoffmann_Mueller"]$color<-"darkolivegreen1"
 
 #Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
-plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Gesamtnetzwerk der PR-Grundlagenliteratur")
+plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr)
+title("Gesamtnetzwerk der PR-Grundlagenliteratur", font.main= 2.5, col.main= "azure4")
 
 ##Visualisierung Ende##
 
