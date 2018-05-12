@@ -1,24 +1,20 @@
-# Verbinden Edge und Node
+#Verbinden Edge und Node
 library(igraph)
-# liest die Dateien direkt aus dem github-Verzeichnis ein
+#liest die Dateien direkt aus dem github-Verzeichnis ein
 edau <- read.csv("https://raw.githubusercontent.com/im041/Final/master/edge-ausb.csv", header=T, as.is=T, sep = ",")
 noau <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/node-ausb.csv", header=T, as.is=T, sep = ",")
 
-# prüft, ob alle Variablen eingelesen wurden
+#prüft, ob alle Variablen eingelesen wurden
 head(edau)
 head(noau)
 
-# wandelt die edgelist in eine Matrix um und baut das igraph-Objekt
+#wandelt die edgelist in eine Matrix um und baut das igraph-Objekt
 ausbties <-as.matrix(edau)
 ausb <- graph_from_data_frame(d=ausbties, vertices=noau, directed=T) #Hier ist irgendwo der Fehler
 ausb
 plot(ausb)
 
-#addiert edges auf, wenn sie in der gleichen Beziehung sind (Bezug zu ausbties oben)
-
-ausb <- simplify(edau, edge.attr.comb = list(weight="sum"))
-
-###Beginn Visualisierung###
+##Visualisierung##
 
 V(ausb)$shape = "circle"
 V(ausb)$color = "turquoise"
@@ -27,7 +23,7 @@ V(ausb)$label.family = "Helvetica"
 V(ausb)$label.cex = 1.0
 #Labelgröße/Schriftgröße
 V(ausb)$label.font = 2 
-#macht Schrift fett 
+#macht Schrift dick 
 V(ausb)$frame.color="white"
 #Rahmenfarbe Knoten 
 V(ausb)$label.dist=0
@@ -35,23 +31,25 @@ V(ausb)$label.dist=0
 V(ausb)$label.color="azure4"
 #Labelfarbe
 
-##Edge-Attribute##
-E(ausb)$arrow.size <- .2 # definiert die Pfeilspitze auf 2
+#Edge-Attribute
+E(ausb)$arrow.size <- .2 
+#definiert die Pfeilspitze auf 2
 E(ausb)$edge.size=5
-edge.width=E(ausb)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+edge.width=E(ausb)$weight 
+#Gewicht der Kanten nach Edge-Attribut "weight" 
 
-###Visualisierung Ende###
+##Visualisierung Ende##
 
-##Habilitation durch Formen hervorheben
+#Habilitation durch Formen hervorheben
 V(ausb)$shape = "circle"
 habi <- V(ausb)[Habilitation == "1"]
 V(ausb)[habi]$shape = "square"
 
-##Doktortitel in unterschiedlichen Farben
+#Doktortitel in unterschiedlichen Farben
 colrs <- c("lightcyan2","turquoise","darkseagreen3")
 V(ausb)$color <- colrs[V(ausb)$Promotion]
 
-##Reihenfolge Geschlecht und Färbung Grundlagenautoren auf keinen Fall ändern!!
+#Färbung Grundlagenautoren
 V(ausb)["Hoffjann"]$color<-"darkolivegreen1"
 V(ausb)["Mast"]$color<-"darkolivegreen1"
 V(ausb)["Steinke"]$color<-"darkolivegreen1"
@@ -59,5 +57,3 @@ V(ausb)["Franck"]$color<-"darkolivegreen1"
 
 plot(ausb)
 title("Meinungsführer und Promotionen der Grundlagenautoren", font.main= 2.5, col.main= "azure4")
-
-
