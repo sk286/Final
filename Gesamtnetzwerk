@@ -7,7 +7,7 @@ el
 pr <- graph.data.frame(el, directed=TRUE)
 pr
 
-##Visualisierung ab hier##
+##Visualisierung##
 
 #Visualisierung mit Befehlen aus Skript Tag3 Blockseminar
 
