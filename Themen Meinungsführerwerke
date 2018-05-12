@@ -3,8 +3,8 @@ library(igraph)
 thema <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-thema.csv", header=T, as.is=T, sep = ",")
 thema <- graph_from_data_frame(thema, directed=T)
 
-###Visualisierung###
-##Vertex Attribute##
+##Visualisierung##
+#Vertex Attribute
 
 V(thema)$shape = "circle"
 #definiert, dass alle Knoten als Kreis auftreten
@@ -15,7 +15,7 @@ V(thema)$label.family = "Helvetica"
 V(thema)$label.cex = 1.0
 #Labelgröße/Schriftgröße
 V(thema)$label.font = 2 
-#macht Schrift fett 
+#macht Schrift dick 
 V(thema)$frame.color="white"
 #Rahmenfarbe Knoten 
 V(thema)$label.dist=0
@@ -30,12 +30,15 @@ V(thema)["Unternehmenskommunikation"]$color<-"darkolivegreen1"
 V(thema)["IssuesManagement"]$color<-"darkolivegreen1"
 #Färbt einen einzigen Knoten ein
 
-##Edge-Attribute##
-E(thema)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
+#Edge-Attribute
+E(thema)$arrow.size <- .5 
+#definiert die Pfeilspitze auf 2
 E(thema)$edge.size=5
-edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+edge.width=E(h)$weight 
+#Gewicht der Kanten nach Edge-Attribut "weight" 
 
-###Visualisierung Ende###
+##Visualisierung Ende##
 
 #Grafik machen
 plot(thema)
+title("Themen Meinungsführerwerke", font.main= 2.5, col.main= "azure4")
