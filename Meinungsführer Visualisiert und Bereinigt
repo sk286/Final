@@ -1,16 +1,16 @@
-# Paket laden
+#Paket laden
 library(igraph)
 
-# edgelist einlesen
+#edgelist einlesen
 pr <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-oj.csv", header=T, as.is=T, sep = ",")
 
-# edgelist prÃ¼fen
+#edgelist pruefen
 pr
 
-# edgelist umwandeln in igraph-objekt
+#edgelist umwandeln in igraph-objekt
 pr <- graph_from_data_frame(pr, directed=T)
 
-# igraph-Objekt prÃ¼fen
+#igraph-Objekt pruefen
 pr
 plot(pr)
 
@@ -23,7 +23,7 @@ V(pr)$label.family = "Helvetica"
 V(pr)$label.cex = 1.0
 #Labelgröße/Schriftgröße
 V(pr)$label.font = 2 
-#macht Schrift fett 
+#macht Schrift dick 
 V(pr)$frame.color="turquoise"
 #Rahmenfarbe Knoten 
 V(pr)$label.dist=0
@@ -31,23 +31,24 @@ V(pr)$label.dist=0
 V(pr)$label.color="azure4"
 #Labelfarbe
 
-
-##Edge-Attribute##
-E(pr)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
+#Edge-Attribute
+E(pr)$arrow.size <- .5 
+#definiert die Pfeilspitze auf 2
 E(pr)$edge.size=5
-edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight"
+edge.width=E(h)$weight 
+#Gewicht der Kanten nach Edge-Attribut "weight"
 
-# Neues Vertex-Attribut "ind" erstellen, basierend auf der Berechnung vom indegree nach degree(pr, mode = "in")
+#Neues Vertex-Attribut "ind" erstellen, basierend auf der Berechnung vom indegree nach degree(pr, mode = "in")
 V(pr)$ind = degree(pr, mode = "in")
 pr
 
-# prÃ¼fen, ob das Vertex-Attribut erstellt wurde
+#pruefen, ob das Vertex-Attribut erstellt wurde
 list.vertex.attributes(pr)
 
-# zeigt uns alle zugewiesenen indegrees in pr an: man sieht, dass es nur wenige Ã¼ber 2 gibt.
+#zeigt uns alle zugewiesenen indegrees in pr an: man sieht, dass es nur wenige ueber 2 gibt.
 V(pr)$ind
 
-# Teilnetzwerk erstellen, indem alle Knoten gelÃ¶scht werden, die einen Indegree-Wert von kleiner als 2 haben
+#Teilnetzwerk erstellen, indem alle Knoten geloescht werden, die einen Indegree-Wert von kleiner als 2 haben
 
 pr1 <- delete_vertices(pr, V(pr)[ind == "1"])
 pr2 <- delete_vertices(pr1, V(pr1)[ind == "2"])
@@ -60,3 +61,4 @@ pr6 <- delete_vertices(pr5, V(pr5)[ind == "6"])
 pr7 <- delete_vertices(pr6, V(pr6)[ind == "7"])
 pr8 <-delete_vertices(pr7, V(pr7)[ind == "0"])
 plot(pr8)
+title("Meinungsführer", font.main= 2.5, col.main= "azure4")
