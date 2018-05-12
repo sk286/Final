@@ -2,16 +2,17 @@ library(igraph)
 el <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-be.csv", header=TRUE)
 is.data.frame(el)
 el
+
 #Funktion graph.data.frame
 pr <- graph.data.frame(el, directed=TRUE)
 pr
 
-########Visualisierung ab hier##########
+##Visualisierung ab hier##
 
 #Visualisierung mit Befehlen aus Skript Tag3 Blockseminar
 
-E(pr)$color="grey" # definiert die Kantenfarbe auf grey
-
+E(pr)$color="grey" 
+# definiert die Kantenfarbe auf grey
 
 V(pr)$shape = "circle"
 #definiert, dass alle Knoten als Kreis auftreten
@@ -23,7 +24,6 @@ V(pr)$frame.color="darkslategray4"
 #Rahmenfarbe Knoten 
 
 #Färbt einen einzigen Knoten ein
-#Färbt einen einzigen Knoten ein
 V(pr)["Hoffjann"]$color<-"darkolivegreen1" 
 V(pr)["RoettgerU"]$color<-"darkolivegreen1"
 V(pr)["Mast"]$color<-"darkolivegreen1"
@@ -32,29 +32,30 @@ V(pr)["Steinbach"]$color<-"darkolivegreen1"
 V(pr)["Franck"]$color<-"darkolivegreen1"
 V(pr)["Hoffmann_Mueller"]$color<-"darkolivegreen1"
 
-#Visualisierung ohne Labels #Hier gemacht: Gesamtnetzwerk, Label Weg und Knoten kleiner
+#Visualisierung ohne Labels 
+#Hier gemacht: Gesamtnetzwerk, Label weg und Knoten kleiner
 plot(pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr)
 title("Gesamtnetzwerk der PR-Grundlagenliteratur", font.main= 2.5, col.main= "azure4")
 
 ##Visualisierung Ende##
 
-##Cluster##
+#Cluster
 cluster_walktrap(pr)
 gc<-cluster_walktrap(pr)          
 modularity(gc)
 membership(gc)
 plot(gc,pr, vertex.size=5, edge.arrow.size=0.05, edge.curved=.2, vertex.label=NA, layout = layout_with_fr, main="Gesamtnetzwerk PR-Grundlagenliteratur"
-##Cluster Ende
-
-#Netzwerkma?e
+#Cluster Ende
+     
+#Netzwerkmasse
 components(pr)
 is_connected(pr)
 diameter(pr)
 edge_density(pr)
 mean_distance(pr)
-
-#ZentralitÃ¤t des Netzwerks
+     
+#Zentralitaet des Netzwerks
 degree(pr,mode="in")
-
+     
 #Dichte
 edge_density(pr)
