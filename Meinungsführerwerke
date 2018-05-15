@@ -1,4 +1,4 @@
-#Netzwerk der MeinungsfÃ¼hrer mit Jahr=Werkenetzwerk
+#Netzwerk der Meinungsfuehrer mit Jahr=Werkenetzwerk
 library(igraph)
 el <- read.csv("https://raw.githubusercontent.com/im041/Coaching-Slot-/master/edge-creme.csv", header=TRUE)
 is.data.frame(el)
@@ -6,8 +6,9 @@ is.data.frame(el)
 me <- graph.data.frame(el, directed=TRUE)
 me
 
-###Visualisierung###
-##Vertex Attribute##
+##Visualisierung##
+
+#Vertex Attribute
 V(me)$shape = "circle"
 #definiert, dass alle Knoten als Kreis auftreten
 V(me)$color = "turquoise"
@@ -24,20 +25,22 @@ V(me)$label.dist=0
 V(me)$label.color="azure4"
 #Labelfarbe
 
-##Edge-Attribute##
-E(me)$arrow.size <- .5 # definiert die Pfeilspitze auf 2
+#Edge-Attribute
+E(me)$arrow.size <- .5 
+#definiert die Pfeilspitze auf 0.5
 E(me)$edge.size=5
-edge.width=E(h)$weight # Gewicht der Kanten nach Edge-Attribut "weight" 
+edge.width=E(h)$weight 
+#Gewicht der Kanten nach Edge-Attribut "weight" 
 
-###Visualisierung Ende###
+##Visualisierung Ende##
 
-#KnotengrÃ¶Ãe nach Indegrees
+#Knotengroesse nach Indegrees
 inh <- degree(me, mode = "in")
 inh
 
-# alle Indegrees mit 1 lÃ¶schen
+#alle Indegrees mit 1 loeschen
 me2 <- delete.vertices(me, V(me)[inh =="1"])
-me3 <-delete_vertices(me2, V(me2)[ind == "0"])
+me3 <-delete_vertices(me2, V(me2)[inh == "0"])
 me3
 
-plot(me3, main="Werke der Meinungsführer")
+plot(me3, main="Werke der Meinungsführer", col.main="azure4")
